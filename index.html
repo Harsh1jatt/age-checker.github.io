@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Checker</title>
+</head>
+<body>
+
+    <label for="birthdate">Enter your birthdate:</label>
+    <input type="date" id="birthdate">
+    <button onclick="checkAge()">Check Age</button>
+
+    <script>
+
+        
+        function checkAge() {
+            var birthdateInput = document.getElementById("birthdate").value;
+            
+            if (birthdateInput === "") {
+                alert("Please enter your birthdate.");
+                return;
+            }
+            console.log(birthdateInput);
+
+            var birthdate = new Date(birthdateInput);
+            var currentDate = new Date();
+
+            var age = currentDate.getFullYear() - birthdate.getFullYear();
+
+            // Check if birthday has occurred this year
+            if (currentDate.getMonth() < birthdate.getMonth() || (currentDate.getMonth() === birthdate.getMonth() && currentDate.getDate() < birthdate.getDate())) {
+                age--;
+            }
+
+            alert("Your age is: " + age);
+        }
+    </script>
+    
+</body>
+</html>
